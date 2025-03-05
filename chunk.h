@@ -4,15 +4,13 @@
 #include "value.h"
 #include <vector>
 
-enum OpCode {
-    OP_CONSTANT,
-    OP_RETURN
-};
+enum OpCode { OP_CONSTANT, OP_RETURN };
 
 struct Chunk {
-    std::vector<uint8_t> code;
-    std::vector<Value> constants;
+  std::vector<uint8_t> code;
+  std::vector<int> lines;
+  std::vector<Value> constants;
 };
 
-void writeChunk(Chunk& chunk, uint8_t byte);
-int addConstant(Chunk& chunk, Value value);
+void writeChunk(Chunk &chunk, uint8_t byte, int line);
+int addConstant(Chunk &chunk, Value value);
